@@ -1,6 +1,6 @@
 import random
 
-def generate_phone_book():
+def generate_phonebook():
     # open three external files for reading
     # you can access each line of the file via its associated variable
     female_file = open('names.female', "r")
@@ -32,7 +32,7 @@ def generate_phone_book():
 
     # now open a file to write the results to
     # if the file doesn't already exist, it is created
-    out = open("phone_book.txt", "w")
+    out = open("phonebook.txt", "w")
 
     # randomly choose a surname
     # once used, remove it from the surname list
@@ -59,5 +59,5 @@ def generate_phone_book():
     out.close()
         
 if __name__ == "__main__":
-    generate_phone_book ()
+    generate_phonebook()
         
