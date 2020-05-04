@@ -1,21 +1,18 @@
-
 import random
 
 def generate_phone_book():
+    # open three external files for reading
+    # you can access each line of the file via its associated variable
+    female_file = open('names.female', "r")
+    male_file = open('names.male')
+    family_file = open ('names.family')
 
-# open three external files for reading
-# you can access each line of the file via its assoc. variable
-
-    female_file = open('names.female.txt', "r")
-    male_file = open('names.male.txt')
-    family_file = open ('names.family.txt')
-
-# create some empty lists of female, male & surnames
+    # create some empty lists of female, male & surnames
     female_list = []
     male_list = []
     family_list = []
 
-# add the names from the files to each list
+    # add the names from the files to each list
     for line in female_file:
         fname = line.rstrip()
         female_list = female_list + [fname]
@@ -28,29 +25,23 @@ def generate_phone_book():
         aname = line.rstrip()
         family_list = family_list + [aname]
 
-# files should be closed when you're finished with them
-
+    # files should be closed when you're finished with them
     female_file.close()
     male_file.close()
     family_file.close()
 
-
-
-# now open a file to write the results to
-# if the file doesn't already exist, it is created
-
+    # now open a file to write the results to
+    # if the file doesn't already exist, it is created
     out = open("phone_book.txt", "w")
 
-# randomly choose a surname
-# once used, remove it from the surname list
-
+    # randomly choose a surname
+    # once used, remove it from the surname list
     while len(family_list):
         surname = family_list[random.randrange(len(family_list))]
         family_list.remove(surname)
 
-# randomly 50% should be male, 50% female
-# once gender is decided, randomly pick a male or female name
-
+        # randomly 50% should be male, 50% female
+        # once gender is decided, randomly pick a male or female name
         if random.randrange(1) == 1:
             index = random.randrange(len(male_list))
             first_name = male_list[index]
@@ -61,13 +52,12 @@ def generate_phone_book():
         print (first_name + " " + surname + " : ", end="", file=out)
 
 # randomly generate a phone number
-
         for n in range(1,10) :
             print (random.randrange(start=1, stop=10), end="", file=out)
 
         print ("\n", end='', file=out)
     out.close()
         
-        
-generate_phone_book ()
+if __name__ == "__main__":
+    generate_phone_book ()
         
